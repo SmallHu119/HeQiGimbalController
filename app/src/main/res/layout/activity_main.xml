@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!-- 视频播放区域 -->
+    <tv.danmaku.ijk.media.player.widget.IjkVideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 顶部状态栏 -->
+    <LinearLayout
+        android:id="@+id/statusBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@drawable/bg_status_bar"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tvConnectionStatus"
+            style="@style/StatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未连接"
+            android:textColor="@color/text_secondary" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="8dp"
+            android:background="@color/divider" />
+
+        <TextView
+            android:id="@+id/tvGimbalStatus"
+            style="@style/StatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="云台: --" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="8dp"
+            android:background="@color/divider" />
+
+        <TextView
+            android:id="@+id/tvCameraStatus"
+            style="@style/StatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="相机: --" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvZoomLevel"
+            style="@style/StatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.0x"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/ivRecordIndicator"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_recording_indicator"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvRecordTime"
+            style="@style/StatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textColor="@color/recording_red"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- 左侧控制面板 - 云台控制 -->
+    <LinearLayout
+        android:id="@+id/leftControlPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center_vertical"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/bg_status_bar"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <!-- 俯仰控制 -->
+        <ImageButton
+            android:id="@+id/btnPitchUp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_control_button"
+            android:contentDescription="@string/label_pitch_up"
+            android:src="@drawable/ic_arrow_up"
+            app:tint="@color/white" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <!-- 偏航控制行 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnYawLeft"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_control_button"
+                android:contentDescription="@string/label_yaw_left"
+                android:src="@drawable/ic_arrow_left"
+                app:tint="@color/white" />
+
+            <Space
+                android:layout_width="16dp"
+                android:layout_height="match_parent" />
+
+            <ImageButton
+                android:id="@+id/btnYawRight"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_control_button"
+                android:contentDescription="@string/label_yaw_right"
+                android:src="@drawable/ic_arrow_right"
+                app:tint="@color/white" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <ImageButton
+            android:id="@+id/btnPitchDown"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bg_control_button"
+            android:contentDescription="@string/label_pitch_down"
+            android:src="@drawable/ic_arrow_down"
+            app:tint="@color/white" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <!-- 快捷功能 -->
+        <Button
+            android:id="@+id/btnCenter"
+            style="@style/ControlButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_center"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnLookDown"
+            style="@style/ControlButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/label_look_down"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <!-- 右侧控制面板 - 相机控制 -->
+    <LinearLayout
+        android:id="@+id/rightControlPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_status_bar"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <!-- 变倍控制 -->
+        <ImageButton
+            android:id="@+id/btnZoomIn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_control_button"
+            android:contentDescription="@string/label_zoom_in"
+            android:src="@drawable/ic_zoom_in"
+            app:tint="@color/white" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <ImageButton
+            android:id="@+id/btnZoomOut"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_control_button"
+            android:contentDescription="@string/label_zoom_out"
+            android:src="@drawable/ic_zoom_out"
+            app:tint="@color/white" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
+
+        <!-- 拍照录像 -->
+        <ImageButton
+            android:id="@+id/btnTakePhoto"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_control_button"
+            android:contentDescription="@string/label_take_photo"
+            android:padding="12dp"
+            android:src="@drawable/ic_camera"
+            app:tint="@color/white" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <ImageButton
+            android:id="@+id/btnRecord"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_control_button"
+            android:contentDescription="@string/label_record"
+            android:padding="12dp"
+            android:src="@drawable/ic_videocam"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+    <!-- 底部控制面板 -->
+    <LinearLayout
+        android:id="@+id/bottomControlPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_status_bar"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/btnImageMode"
+            style="@style/ControlButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="可见光" />
+
+        <Button
+            android:id="@+id/btnLaser"
+            style="@style/ControlButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/label_laser" />
+
+        <Button
+            android:id="@+id/btnConnect"
+            style="@style/ControlButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/label_connect" />
+
+        <ImageButton
+            android:id="@+id/btnSettings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_control_button"
+            android:contentDescription="@string/label_settings"
+            android:padding="10dp"
+            android:src="@drawable/ic_settings"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+</FrameLayout>

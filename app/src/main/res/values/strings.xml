@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">禾启吊舱控制器</string>
+    
+    <!-- Control Labels -->
+    <string name="label_pitch_up">俯仰上</string>
+    <string name="label_pitch_down">俯仰下</string>
+    <string name="label_yaw_left">偏航左</string>
+    <string name="label_yaw_right">偏航右</string>
+    <string name="label_center">回中</string>
+    <string name="label_look_down">下视90°</string>
+    <string name="label_zoom_in">放大</string>
+    <string name="label_zoom_out">缩小</string>
+    <string name="label_take_photo">拍照</string>
+    <string name="label_record">录像</string>
+    <string name="label_stop_record">停止录像</string>
+    <string name="label_ir_camera">红外</string>
+    <string name="label_visible_camera">可见光</string>
+    <string name="label_split_screen">分屏</string>
+    <string name="label_laser">激光测距</string>
+    <string name="label_settings">设置</string>
+    <string name="label_connect">连接</string>
+    <string name="label_disconnect">断开</string>
+    
+    <!-- Status Labels -->
+    <string name="status_connected">已连接</string>
+    <string name="status_disconnected">未连接</string>
+    <string name="status_connecting">连接中...</string>
+    <string name="status_recording">正在录像</string>
+    <string name="status_not_recording">未录像</string>
+    
+    <!-- Settings Labels -->
+    <string name="settings_title">设置</string>
+    <string name="settings_camera_ip">相机IP地址</string>
+    <string name="settings_control_ip">控制IP地址</string>
+    <string name="settings_control_port">控制端口</string>
+    <string name="settings_rtsp_url">RTSP地址</string>
+    <string name="settings_save">保存</string>
+    <string name="settings_cancel">取消</string>
+    
+    <!-- Default Values -->
+    <string name="default_camera_ip">192.168.144.64</string>
+    <string name="default_control_ip">192.168.144.64</string>
+    <string name="default_control_port">5000</string>
+    <string name="default_rtsp_url">rtsp://192.168.144.64:558/live/single</string>
+    
+    <!-- Toast Messages -->
+    <string name="msg_connected">连接成功</string>
+    <string name="msg_disconnected">已断开连接</string>
+    <string name="msg_connection_failed">连接失败</string>
+    <string name="msg_photo_taken">拍照成功</string>
+    <string name="msg_record_started">开始录像</string>
+    <string name="msg_record_stopped">停止录像</string>
+    <string name="msg_zooming">变倍中...</string>
+    <string name="msg_settings_saved">设置已保存</string>
+</resources>
